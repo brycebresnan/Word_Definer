@@ -10,13 +10,19 @@ describe '#Word' do
       id: nil
     }
 
+    @attributes2 = {
+      word: "Dirigible",
+      id: nil
+    }
+
     @word = Word.new(@attributes)
+    @word.save
 
   end
 
   describe('.list') do
     it("returns an array of the words saved in the hash. Will return empty array if nothing is stored.") do
-      expect(Word.list).to(eq([]))
+      expect(Word.list).to(eq([@word]))
     end
   end
 
@@ -33,6 +39,13 @@ describe '#Word' do
   describe('#save') do
     it("saves a word to the class varriable hash") do
       expect(Word.list).to(eq([@word]))
+    end
+  end
+
+  describe('.delete_all') do
+    it("Clears all words out of the hash") do
+      Word.delete_all
+      expect(Word.list).to(eq([]))
     end
   end
 
