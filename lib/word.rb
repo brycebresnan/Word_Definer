@@ -27,4 +27,8 @@ class Word
     @@unique_id = 0
   end
 
+  def update(new_word)
+    self.word = new_word
+    @@words[self.id] = Word.new(word: self.word, id: self.id)
+  end
 end
