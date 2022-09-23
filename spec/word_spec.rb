@@ -63,4 +63,12 @@ describe '#Word' do
     end
   end
 
+  describe('.sorted_list') do
+    it('return the array of values alphabetically') do
+      word2 = Word.new(@attributes2)
+      word2.save
+      expect(Word.sorted_list).to(eq([@word, word2]))
+    end
+  end
+
 end
