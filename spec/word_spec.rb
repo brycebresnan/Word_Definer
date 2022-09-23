@@ -49,4 +49,11 @@ describe '#Word' do
     end
   end
 
+  describe('#update') do
+    it("updates a word but keeps it's id") do
+      @word.update("Blimp")
+      expect(@word.word).to(eq("Blimp"))
+    end
+  end
+
 end
