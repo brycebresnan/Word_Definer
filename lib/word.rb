@@ -21,5 +21,10 @@ class Word
   def ==(words_to_compare)
     self.word == words_to_compare.word
   end
-  
+
+  def self.delete_all
+    @@words = {}
+    @@unique_id = 0
+  end
+
 end
