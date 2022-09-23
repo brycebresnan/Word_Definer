@@ -7,7 +7,8 @@ class Word
 
   def initialize(attributes)
     @word = attributes.fetch(:word)
-    @id = attributes.fetch(:id) || @@unique_id =+ 1
+    id = attributes.fetch(:id) 
+    @id = id || @@unique_id += 1
   end
 
   def self.list
@@ -34,5 +35,9 @@ class Word
 
   def delete
     @@words.delete(self.id)
+  end
+
+  def self.sorted_list
+    @@words.values().sort { |a, b| a.word.downcase <=> b.word.downcase }
   end
 end
