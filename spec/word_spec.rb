@@ -56,4 +56,11 @@ describe '#Word' do
     end
   end
 
+  describe('#delete') do
+    it("deletes a specific word from the hash") do
+      @word.delete
+      expect(Word.list).to(eq([]))
+    end
+  end
+
 end
