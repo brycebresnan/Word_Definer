@@ -4,7 +4,7 @@ require 'word'
 describe '#Word' do
 
   before(:each) do
-
+    Word.delete_all
     @attributes = {
       word: "Cantankerous",
       id: nil
@@ -66,8 +66,8 @@ describe '#Word' do
   describe('.sorted_list') do
     it('return the array of values alphabetically') do
       word2 = Word.new(@attributes2)
-      word2.save
-      expect(Word.sorted_list).to(eq([@word, word2]))
+      word2.save()
+      expect(Word.sorted_list).to(eq([@word,word2]))
     end
   end
 
