@@ -1,14 +1,14 @@
 require 'rspec'
 require 'word'
 
-descibe '#Word' do
+describe '#Word' do
 
   before(:each) do
 
-  attributes = {
-    word: "Cantankerous"
-    id: nil
-  }
+    attributes = {
+      word: "Cantankerous",
+      id: nil
+    }
 
   end
 
