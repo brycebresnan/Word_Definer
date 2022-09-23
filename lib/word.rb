@@ -7,8 +7,7 @@ class Word
 
   def initialize(attributes)
     @word = attributes.fetch(:word)
-    id = attributes.fetch(:id) 
-    @id = id || @@unique_id += 1
+    @id = attributes.fetch(:id) || @@unique_id += 1
   end
 
   def self.list
