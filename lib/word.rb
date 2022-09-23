@@ -18,4 +18,8 @@ class Word
     @@words[self.id] = Word.new(word: self.word, id: self.id)
   end
 
+  def ==(words_to_compare)
+    self.word == words_to_compare.word
+  end
+  
 end
