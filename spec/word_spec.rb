@@ -67,7 +67,9 @@ describe '#Word' do
     it('return the array of values alphabetically') do
       word2 = Word.new(@attributes2)
       word2.save()
-      expect(Word.sorted_list).to(eq([@word,word2]))
+      word3 = Word.new(word: "Ambler", id: nil)
+      word3.save()
+      expect(Word.sorted_list).to(eq([word3,@word,word2]))
     end
   end
 
