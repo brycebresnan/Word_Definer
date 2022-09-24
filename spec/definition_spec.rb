@@ -41,8 +41,19 @@ describe '#Definition' do
 
   describe('.delete_all') do
     it("Clears all definitions out of the hash") do
+      definition = Definition.new(id: nil, definition: "To throw out of a window.",word_id: @word.id)
+      definition.save 
       Definition.delete_all
       expect(Definition.list).to(eq([]))
+    end
+  end
+
+  describe('#update') do
+    it("updates a definition but keeps it's id") do
+      definition = Definition.new(id: nil, definition: "To throw out of a window.",word_id: @word.id)
+      definition.save 
+      definition.update("The act of finding a penny on the ground.")
+      expect(definition.definition).to(eq("The act of finding a penny on the ground."))
     end
   end
 
