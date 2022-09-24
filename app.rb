@@ -14,6 +14,11 @@ get('/word/new') do
   erb(:word_new)
 end
 
+patch('/words') do
+  @words = Word.sorted_list
+  erb(:words)
+end
+
 post('/words') do
   new_word = params[:word]
   word = Word.new(word: new_word, id: nil)

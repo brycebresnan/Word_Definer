@@ -13,3 +13,10 @@
 <% end %>
 
 <a href="/word/new">ADD a new word!</a>
+<br>
+<br>
+<form action="/words" method="post">
+  <input name="_method" type="hidden" value="patch">
+
+  <button type="submit" class="btn btn-success">Sort Words Alphabetically</button>
+</form>
