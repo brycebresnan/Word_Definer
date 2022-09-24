@@ -38,6 +38,10 @@ class Definition
     @@defs.delete(self.id)
   end
 
+  def self.delete_by_id(id)
+    @@defs.delete(id)
+  end
+
   def self.find(id)
     @@defs[id]
   end
