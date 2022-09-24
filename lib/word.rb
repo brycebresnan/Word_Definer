@@ -47,5 +47,14 @@ class Word
   def definitions
     Definition.find_by_word(self.id)
   end
+
+  def delete_defs
+    def_array = Definition.find_by_word(self.id)
+    if def_array != []
+      def_array.each do |item|
+        Definition.delete_by_id(item.id)
+      end
+    end
+  end
   
 end
