@@ -3,7 +3,10 @@ require 'word'
 require 'definition'
 
 describe '#Definition' do
+  
   before(:each) do
+    Definition.delete_all
+    Word.delete_all
     @word = Word.new(word: "Defenestrate", id: nil)
     @word.save
 
@@ -50,10 +53,19 @@ describe '#Definition' do
 
   describe('#update') do
     it("updates a definition but keeps it's id") do
-      definition = Definition.new(id: nil, definition: "To throw out of a window.",word_id: @word.id)
+      definition = Definition.new(@attributes)
       definition.save 
       definition.update("The act of finding a penny on the ground.")
       expect(definition.definition).to(eq("The act of finding a penny on the ground."))
+    end
+  end
+
+  describe('#delete') do
+    it("deletes a specific definition from the hash") do
+      definition = Definition.new(@attributes)
+      definition.save
+      definition.delete
+      expect(Definition.list).to(eq([]))
     end
   end
 
