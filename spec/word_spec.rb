@@ -98,4 +98,14 @@ describe '#Word' do
     end
   end
 
+  describe('.search_words') do
+    it('returns a list of words that match the string input') do
+      word2 = Word.new(@attributes2)
+      word2.save()
+      word3 = Word.new(word: "Ambler", id: nil)
+      word3.save()
+      expect(Word.search_words("Ambler")).to(eq([word3]))
+    end
+  end
+
 end
