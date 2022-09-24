@@ -37,3 +37,15 @@ get('/word/:id/edit') do
   @word = Word.find(params[:id].to_i())
   erb(:word_edit)
 end
+
+patch('/word/:id') do
+  @word = Word.find(params[:id].to_i)
+  @word.update(params[:word_edit])
+  redirect to("/word/#{@word.id}")
+end
+
+delete('/word/:id') do
+  word = Word.find(params[:id].to_i)
+  word.delete
+  redirect '/'
+end
