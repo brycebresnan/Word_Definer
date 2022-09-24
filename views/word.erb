@@ -12,8 +12,8 @@
   <% else %>
     <p>You have no definitions for this word!</p>
   <% end %>
-
-<h3>Add a definition for "<%= @word.word %>":</h3>
+<br>
+<h4>Add a definition for "<%= @word.word %>":</h4>
 
 <form action="/word/<%= @word.id %>/def" method="post">
   <div class="form-group">
