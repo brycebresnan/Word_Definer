@@ -1,0 +1,15 @@
+<h1>Word Warriors</h1>
+
+<h3>Choose your words...carefully:</h3>
+
+<% if @words.any? %>
+  <ul>
+    <% @words.each do |word| %>
+      <li><a href="/words/<%= word.id %>"><%= word.word %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p> You have no words yet!</p>
+<% end %>
+
+<a href="/words/new">ADD a new word!</a>
