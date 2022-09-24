@@ -76,4 +76,16 @@ describe '#Definition' do
       expect(Definition.find(definition.id)).to(eq(definition))
     end
   end
+
+  describe('.find_by_word') do
+    it("finds definition for a word given the word's id") do
+      word2 = Word.new(word: "Goober", id: nil)
+      word2.save
+      definition = Definition.new(@attributes)
+      definition.save
+      definition2 = Definition.new(id: nil, definition: "To throw out of a window.",word_id: word2.id)
+      definition2.save 
+      expect(Definition.find_by_word(word2.id)).to(eq([definition2]))
+    end
+  end
 end
