@@ -39,4 +39,8 @@ class Word
   def self.sorted_list
     @@words.values().sort { |a, b| a.word.downcase <=> b.word.downcase }
   end
+
+  def self.find(id)
+    @@words[id]
+  end
 end
