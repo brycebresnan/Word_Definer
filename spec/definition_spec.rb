@@ -9,16 +9,33 @@ describe '#Definition' do
 
     @attributes = {
       id: nil,
-      def: "To throw out of a window.",
+      definition: "To throw out of a window.",
       word_id: @word.id
     }
 
-    @def = Definition.new(@attributes)
   end
   
   describe('.list') do
     it("returns an array of the definition saved in the hash. Will return empty array if nothing is stored.") do
       expect(Definition.list).to(eq([]))
+    end
+  end
+
+  describe('#save') do
+    it("saves a definition to the class varriable hash") do
+      definition = Definition.new(@attributes)
+      definition.save()
+      expect(Definition.list).to(eq([definition]))
+    end
+  end
+
+  describe('#==') do
+    it("allows test to compare two of the same words ") do
+      definition = Definition.new(id: nil, definition: "To throw out of a window.",word_id: @word.id)
+      definition.save 
+      definition2 = Definition.new(id: nil, definition: "To throw out of a window.",word_id: @word.id)
+      definition2.save 
+      expect(definition).to(eq(definition2))
     end
   end
 
