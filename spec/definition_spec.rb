@@ -69,4 +69,11 @@ describe '#Definition' do
     end
   end
 
+  describe('self.find') do
+    it('finds a specific definition given the id') do
+      definition = Definition.new(@attributes)
+      definition.save
+      expect(Definition.find(definition.id)).to(eq(definition))
+    end
+  end
 end
