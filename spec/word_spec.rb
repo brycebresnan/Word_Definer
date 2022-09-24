@@ -1,9 +1,11 @@
 require 'rspec'
 require 'word'
+require 'definition'
 
 describe '#Word' do
 
   before(:each) do
+    Definition.delete_all
     Word.delete_all
     @attributes = {
       word: "Cantankerous",
@@ -73,9 +75,17 @@ describe '#Word' do
     end
   end
 
-  describe('self.find') do
+  describe('.find') do
     it('finds a specific word given the id') do
       expect(Word.find(@word.id)).to(eq(@word))
+    end
+  end
+
+  describe('#definitions') do
+    it('returns an array of all the definitions linked to this word') do
+      definition = Definition.new(id: nil, definition: "To throw out of a window.",word_id: @word.id)
+      definition.save()
+      expect(@word.definitions).to(eq([definition]))
     end
   end
 
