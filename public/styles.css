@@ -1,0 +1,14 @@
+body {
+  font-family: 'Aclonica';
+  font-style: bold;
+  background: url('images/peakpx.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  padding-top: 5%;
+}
+
+h1 {
+  font-size: 400%;
+}
