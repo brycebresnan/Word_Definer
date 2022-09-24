@@ -29,4 +29,8 @@ class Definition
     @@unique_id = 0
   end
 
+  def update(new_definition)
+    self.definition = new_definition
+    @@defs[self.id] = Definition.new(definition: self.definition, id: self.id, word_id: self.word_id)
+  end
 end
