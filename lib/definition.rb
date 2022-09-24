@@ -38,4 +38,8 @@ class Definition
     @@defs.delete(self.id)
   end
 
+  def self.find(id)
+    @@defs[id]
+  end
+
 end
