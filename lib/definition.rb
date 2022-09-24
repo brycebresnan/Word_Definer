@@ -20,8 +20,8 @@ class Definition
     @@defs[self.id] = Definition.new(definition: self.definition, id: self.id, word_id: self.word_id)
   end
 
-  def ==(words_to_compare)
-    self.definition == words_to_compare.definition
+  def ==(definition_to_compare)
+    self.definition == definition_to_compare.definition
   end
 
   def self.delete_all
