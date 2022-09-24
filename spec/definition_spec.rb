@@ -88,4 +88,16 @@ describe '#Definition' do
       expect(Definition.find_by_word(word2.id)).to(eq([definition2]))
     end
   end
+
+  describe('.delete_by_id') do
+    it('will delete any definition with the given id') do
+      definition = Definition.new(@attributes)
+      definition.save
+      definition2 = Definition.new(id: nil, definition: "To throw out of a window.",word_id: @word.id)
+      definition2.save
+      Definition.delete_by_id(definition2.id)
+      expect(Definition.list).to(eq([definition]))
+    end
+  end
+
 end
