@@ -50,3 +50,22 @@ delete('/word/:id') do
   word.delete
   redirect '/'
 end
+
+get('/word/:id/def/:def_id') do
+  @word = Word.find(params[:id].to_i)
+  @definition = Definition.find(params[:def_id].to_i())
+  erb(:definition_edit)
+end
+
+patch('/word/:id/def/:def_id') do
+  @definition = Definition.find(params[:def_id].to_i())
+  @definition.update(params[:def_edit])
+  redirect to("/word/#{params[:id]}")
+end
+
+delete('/word/:id/def/:def_id') do
+  @word = Word.find(params[:id].to_i())
+  definition = Definition.new(definition: params[:definition_text], id: nil, word_id: @word.id)
+  definition.save()
+  erb(:word)
+end
