@@ -46,6 +46,7 @@ end
 
 delete('/word/:id') do
   word = Word.find(params[:id].to_i)
+  word.delete_defs
   word.delete
   redirect '/'
 end
