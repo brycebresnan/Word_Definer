@@ -64,12 +64,18 @@ describe '#Word' do
   end
 
   describe('.sorted_list') do
-    it('return the array of values alphabetically') do
+    it('returns the array of values alphabetically') do
       word2 = Word.new(@attributes2)
       word2.save()
       word3 = Word.new(word: "Ambler", id: nil)
       word3.save()
       expect(Word.sorted_list).to(eq([word3,@word,word2]))
+    end
+  end
+
+  describe('self.find') do
+    it('finds a specific word given the id') do
+      expect(Word.find(@word.id)).to(eq(@word))
     end
   end
 
