@@ -10,8 +10,8 @@ get('/') do
   erb(:words)
 end
 
-get('/words/new') do
-  erb(:words_new)
+get('/word/new') do
+  erb(:word_new)
 end
 
 post('/words') do
