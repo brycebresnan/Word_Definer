@@ -25,3 +25,15 @@ get('/word/:id') do
   @word = Word.find(params[:id].to_i())
   erb(:word)
 end
+
+post('/word/:id/def') do
+  @word = Word.find(params[:id].to_i())
+  definition = Definition.new(definition: params[:definition_text], id: nil, word_id: @word.id)
+  definition.save()
+  erb(:word)
+end
+
+get('/word/:id/edit') do
+  @word = Word.find(params[:id].to_i())
+  erb(:word_edit)
+end
