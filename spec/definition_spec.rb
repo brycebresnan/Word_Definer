@@ -39,4 +39,11 @@ describe '#Definition' do
     end
   end
 
+  describe('.delete_all') do
+    it("Clears all definitions out of the hash") do
+      Definition.delete_all
+      expect(Definition.list).to(eq([]))
+    end
+  end
+
 end

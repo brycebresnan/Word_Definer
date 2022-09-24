@@ -23,4 +23,10 @@ class Definition
   def ==(words_to_compare)
     self.definition == words_to_compare.definition
   end
+
+  def self.delete_all
+    @@defs = {}
+    @@unique_id = 0
+  end
+
 end
