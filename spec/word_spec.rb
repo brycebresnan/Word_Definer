@@ -89,4 +89,13 @@ describe '#Word' do
     end
   end
 
+  describe('#delete_defs') do
+    it('will delete all definitions assocatiated with this word') do
+      definition = Definition.new(id: nil, definition: "To throw out of a window.",word_id: @word.id)
+      definition.save()
+      @word.delete_defs
+      expect(@word.definitions).to(eq([]))
+    end
+  end
+
 end
