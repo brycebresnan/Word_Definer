@@ -7,7 +7,7 @@ also_reload('lib/**/*.rb')
 
 get('/') do 
   if params["search"]
-    @words = Word.search_by_name(params[:search])
+    @words = Word.search_words(params[:search])
   else
     @words = Word.list
   end
