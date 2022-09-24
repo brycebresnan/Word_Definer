@@ -33,4 +33,9 @@ class Definition
     self.definition = new_definition
     @@defs[self.id] = Definition.new(definition: self.definition, id: self.id, word_id: self.word_id)
   end
+
+  def delete
+    @@defs.delete(self.id)
+  end
+
 end
