@@ -56,5 +56,9 @@ class Word
       end
     end
   end
-  
+
+  def self.search_words(search_word)
+    @@words.values().select {|word| word.word == search_word}
+  end
+
 end
