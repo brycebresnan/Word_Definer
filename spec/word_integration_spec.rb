@@ -23,3 +23,15 @@ describe('create a definition path', {:type => :feature}) do
     expect(page).to have_content('A circular flat disc used for a throwing sport')
   end
 end
+
+describe('update a word path', {:type => :feature}) do
+  it('updates a word and then goes to the word page') do
+    word = Word.new(word: 'Discus', id: nil)
+    word.save
+    visit("/word/#{word.id}")
+    click_on('Edit')
+    fill_in('word_edit', :with => 'Finicky')
+    click_on('Update')
+    expect(page).to have_content('Finicky')
+  end
+end
