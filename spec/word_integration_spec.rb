@@ -3,7 +3,7 @@ require('./app')
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
-describe('create an word path', {:type => :feature}) do
+describe('create then get a word path', {:type => :feature}) do
   it('creates an word and then goes to the words page') do
     visit('/')
     click_on('ADD a new word!')
@@ -13,8 +13,35 @@ describe('create an word path', {:type => :feature}) do
   end
 end
 
+describe('update a word path', {:type => :feature}) do
+  it('updates a word and then goes to the word page') do
+    Word.delete_all
+    word = Word.new(word: 'Discus', id: nil)
+    word.save
+    visit("/word/#{word.id}")
+    click_on('Edit')
+    fill_in('word_edit', :with => 'Finicky')
+    click_on('Update')
+    expect(page).to have_content('Finicky')
+  end
+end
+
+describe('delete a word path', {:type => :feature}) do
+  it('deletes a word and then goes to the word page') do
+    Word.delete_all
+    word = Word.new(word: 'Discus', id: nil)
+    word.save
+    visit("/word/#{word.id}")
+    click_on('Edit')
+    click_on('Delete word')
+    expect(page).to have_no_content('Discus')
+  end
+end
+
 describe('create a definition path', {:type => :feature}) do
   it('creates a definition and then goes to the word page') do
+    Word.delete_all
+    Definition.delete_all
     word = Word.new(word: 'Discus', id: nil)
     word.save
     visit("/word/#{word.id}")
@@ -24,14 +51,14 @@ describe('create a definition path', {:type => :feature}) do
   end
 end
 
-describe('update a word path', {:type => :feature}) do
-  it('updates a word and then goes to the word page') do
+describe('update a definition path', {:type => :feature}) do
+  it('deletes a word and then goes to the word page') do
+    Word.delete_all
     word = Word.new(word: 'Discus', id: nil)
     word.save
     visit("/word/#{word.id}")
     click_on('Edit')
-    fill_in('word_edit', :with => 'Finicky')
-    click_on('Update')
-    expect(page).to have_content('Finicky')
+    click_on('Delete word')
+    expect(page).to have_no_content('Discus')
   end
 end
