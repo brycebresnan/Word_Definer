@@ -51,14 +51,17 @@ describe('create a definition path', {:type => :feature}) do
   end
 end
 
-describe('update a definition path', {:type => :feature}) do
-  it('deletes a word and then goes to the word page') do
+describe('delete a definition path', {:type => :feature}) do
+  it('deletes a definition and then goes to the definition page') do
     Word.delete_all
+    Definition.delete_all
     word = Word.new(word: 'Discus', id: nil)
     word.save
+    definition = Definition.new(definition: 'A flat throwing disk sport', id: nil, word_id: word.id)
+    definition.save()
     visit("/word/#{word.id}")
-    click_on('Edit')
-    click_on('Delete word')
-    expect(page).to have_no_content('Discus')
+    click_on('A flat throwing disk sport')
+    click_on('Delete definition')
+    expect(page).to have_no_content('A flat throwing disk sport')
   end
 end
